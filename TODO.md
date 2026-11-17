@@ -21,7 +21,7 @@
 
 - [x] **Base para tráfego pago e desempenho.** UTMs são preservadas entre CTAs e registradas na solicitação; páginas têm metadados específicos, Open Graph/Twitter, manifesto de rotas, conteúdo indexável no HTML inicial, áreas administrativas e 404 com `noindex`, e carregamento por rota. Build atual: JavaScript principal `131,59 kB` comprimido em gzip e CSS `25,51 kB` gzip; isso não é pontuação PSI. A escala Lighthouse/PSI vai até 100, portanto “acima de 100” não é um resultado possível nem prometido. Domínio e IDs de tags não foram fornecidos; canonical, sitemap e verificação final dos documentos do gateway ficam para a publicação no domínio escolhido.
 
-- [x] **Aplicação executável e checkpoint.** Backend e banco habilitados, migração aditiva aplicada, `pnpm check`, `pnpm test` (8 testes) e `pnpm build` aprovados; smoke test de produção confirmou HTML/metadados por rota, status 404 real, `noindex` e asset local; logo no armazenamento gerenciado respondeu por HTTPS. Projeto disponível no Preview e checkpoint GitHub pendente do último push. Publicação automática está desligada e o site não foi publicado.
+- [x] **Aplicação executável e checkpoint.** Backend e banco habilitados, migração aditiva aplicada, `pnpm check`, `pnpm test` (8 testes) e `pnpm build` aprovados; smoke test de produção confirmou HTML/metadados por rota, status 404 real, `noindex` e asset local; logo no armazenamento gerenciado respondeu por HTTPS. Checkpoint principal em `main` confirmado no GitHub: `ea0524f1c4fbdd9fdb8ad6411a8fd6d36a461b3a`. Publicação automática está desligada e o site não foi publicado.
 
 ## Pendências para publicação/entrada em campanha
 
