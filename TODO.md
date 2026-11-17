@@ -32,6 +32,15 @@
 - [x] **Hero cinematográfico em Sobre e Contato.** O primeiro bloco das duas páginas segue a estrutura full-bleed do Portfólio. Sobre usa a foto já creditada; Contato usa o fundo técnico armazenado no projeto. Capturas desktop e mobile confirmaram legibilidade; o formulário, avisos e campos foram preservados.
 - [x] **Atualizar GitHub.** As alterações estão prontas para integrar ao `main` com avanço fast-forward, sem sobrescrever commits; imagens e créditos estão versionados. A autopublicação está ativada e pode ser iniciada pelo checkpoint.
 
+## Novo pedido — legibilidade, navegação e polimento visual
+
+- [x] **Eliminar o flash sem estilo.** Aplicado CSS crítico no HTML inicial para que o snapshot SEO apareça já com estilo antes de carregar React/CSS; o fallback global acompanha o mesmo visual e some quando o app renderiza. Rotas públicas e administrativas foram verificadas no HTML inicial servido.
+- [x] **Legibilidade das descrições.** Aumentadas descrições e textos corridos em todas as páginas públicas e no painel; o texto escurece em superfícies claras e permanece claro/contrastante em superfícies escuras, preservando Sora nos títulos e Montserrat nos textos. Capturas desktop e mobile revisadas.
+- [x] **Navegação no topo.** Mudança de rota agora leva imediatamente ao topo, preservando URLs com hash/âncora.
+- [x] **Ícones.** Adicionadas profundidade 3D, sombras coloridas vívidas e movimento sutil aos ícones; `prefers-reduced-motion` é respeitado e o ícone de carregamento mantém sua animação própria.
+- [x] **Cards.** Cards receberam sombra, elevação responsiva no hover e pulso ao pressionar; foco permanece visível e a checagem visual desktop/mobile foi aprovada.
+- [x] **Verificar e sincronizar.** `pnpm check`, `pnpm test` (16 testes), `pnpm build`, validação do HTML crítico, capturas desktop/mobile e `git diff --check` passaram; esta versão será integrada ao `main` via avanço fast-forward e o checkpoint será confirmado, sem force-push ou substituição de histórico.
+
 ## Estado de publicação e arquivos do proprietário
 
 - `publishing.auto_publish` está **ativado**; um checkpoint aceito em `main` pode disparar publicação automática. A conclusão deve ser consultada no Dashboard; não presumir que o site já está publicado.

@@ -735,3 +735,208 @@ html[data-app-ready="true"] .seo-snapshot { display: none; }
 
 .hero-photo-note a, .inner-hero--cinematic .hero-photo-note a { color: #c8d4ff; text-decoration: underline; text-decoration-color: rgba(200,212,255,.52); text-underline-offset: 2px; }
 .hero-photo-note a:hover, .inner-hero--cinematic .hero-photo-note a:hover { color: #fff; }
+
+
+/* Readability, depth and interaction refinements requested by the owner. */
+:root { --muted: #4b5b71; }
+body { font-size: 16px; }
+
+.section-heading > p,
+.portfolio-intro__inner > p,
+.about-copy p,
+.service-detail__lead,
+.legal-hero p {
+  color: #43536a;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.hero__copy > p,
+.inner-hero--cinematic .inner-hero__inner > p,
+.closing-cta p,
+.contact-info--cinematic > .contact-info__content > p {
+  color: rgba(248, 250, 255, .93);
+  font-size: 16px;
+  line-height: 1.8;
+}
+.process-step p {
+  color: rgba(244, 248, 255, .88);
+  font-size: 14px;
+  line-height: 1.75;
+}
+.hero__trust { color: rgba(239, 246, 255, .87); font-size: 12px; }
+.inner-hero__meta { font-size: 12px; }
+.inner-hero--cinematic .contact-hero__note { color: rgba(247, 250, 255, .92); font-size: 13px; }
+.inner-hero--cinematic .hero-photo-note,
+.hero-photo-note--home { color: rgba(245, 249, 255, .88); font-size: 11px; }
+
+.stat-item > span:last-child,
+.problem-card p,
+.service-preview p,
+.why-points p,
+.principle-grid p,
+.service-detail__facts p,
+.electric-line p,
+.check-list li,
+.contract-list li,
+.service-note p,
+.service-note--line,
+.contact-info > p,
+.contact-info__notice p,
+.contact-form-card__heading p,
+.consent-check,
+.form-footnote,
+.form-message,
+.form-success p,
+.legal-review-note,
+.legal-content p,
+.legal-content li,
+.admin-login-card p,
+.admin-heading p,
+.admin-message__body,
+.admin-message__contact,
+.admin-message__service,
+.admin-message__person span,
+.admin-empty p,
+.admin-state p,
+.admin-data-note,
+.not-found p {
+  color: #43536a;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.stat-item > span:last-child { font-size: 12px; line-height: 1.55; }
+.about-copy .lead { color: #31425e; font-size: 16px; line-height: 1.75; }
+.credential-row strong { color: #35465d; font-size: 13px; line-height: 1.65; }
+.electric-line small { color: #56667c; font-size: 12px; line-height: 1.6; }
+.service-note strong { font-size: 12px; }
+.contact-hero__note { color: #46566d; font-size: 13px; }
+.contact-detail > span:nth-child(2) small { color: #46566d; font-size: 12px; }
+.contact-detail > span:nth-child(2) strong { font-size: 13px; }
+.contact-info__notice p { font-size: 13px; }
+.contact-info--cinematic .contact-info__notice p { color: rgba(244, 248, 255, .9); }
+.contact-info--cinematic .contact-detail > span:nth-child(2) small { color: rgba(239, 246, 255, .86); font-size: 12px; }
+.contact-info--cinematic .contact-detail > span:nth-child(2) strong { font-size: 13px; }
+.contact-form label:not(.consent-check):not(.honeypot),
+.admin-login-field { font-size: 12px; }
+.contact-form input:not([type="checkbox"]),
+.contact-form select,
+.contact-form textarea,
+.admin-login-field input,
+.admin-search input { font-size: 14px; }
+.contact-form input::placeholder,
+.contact-form textarea::placeholder { color: #586982; }
+.form-footnote { font-size: 12px; }
+.admin-summary small { color: #627188; font-size: 12px; }
+.admin-message__contact { font-size: 12px; }
+.admin-message__head time,
+.admin-attribution,
+.admin-data-note { color: #5b6a7f; font-size: 12px; }
+.admin-message__service { font-size: 12px; }
+.admin-message__person span { font-size: 12px; }
+.status-select { font-size: 11px; }
+.admin-filters > select,
+.status-select select { font-size: 13px; }
+.admin-login-error { font-size: 13px !important; }
+
+.site-footer__brand p { color: rgba(245, 249, 255, .86); font-size: 13px; }
+.site-footer__column { color: rgba(240, 246, 255, .88); font-size: 12px; }
+.site-footer__column h2 { font-size: 13px; }
+.site-footer__legal > p,
+.site-footer__legal-links,
+.site-footer__bottom { color: rgba(238, 245, 255, .8); font-size: 12px; }
+.profile-photo figcaption span,
+.profile-photo figcaption a { color: rgba(248, 250, 255, .92); font-size: 12px; }
+.legal-updated { color: #536278; font-size: 12px; }
+.cookie-panel__copy p { color: #46566d; font-size: 13px; line-height: 1.7; }
+.cookie-panel__copy .eyebrow { font-size: 10px; }
+.cookie-panel__actions .button { font-size: 11px; }
+.cookie-option strong { font-size: 11px; }
+.cookie-option small { color: #536278; font-size: 12px; }
+
+.seo-snapshot { min-height: 100vh; min-height: 100svh; padding: clamp(46px, 8vw, 92px) 24px; }
+.seo-snapshot__inner { width: min(930px, 100%); }
+.seo-snapshot__eyebrow { font-size: 11px; }
+.seo-snapshot__inner > p:not(.seo-snapshot__eyebrow) { color: rgba(247, 249, 255, .92); font-size: 16px; }
+.seo-snapshot__inner > a { color: #071731; font-size: 14px; }
+.route-fallback { min-height: 100vh; min-height: 100svh; }
+.route-fallback p { color: rgba(247, 249, 255, .92); font-size: 16px; }
+
+/* Vivid Lucide icons: colored depth shadows plus restrained 3D motion. */
+svg.lucide {
+  transform-box: fill-box;
+  transform-origin: center;
+  filter: saturate(1.45) drop-shadow(0 1px 0 rgba(255,255,255,.24))
+    drop-shadow(0 3px 0 rgba(24,182,165,.34)) drop-shadow(2px 5px 7px rgba(91,113,220,.34));
+}
+svg.lucide:not(.spin) { animation: icon-depth-float 4.8s ease-in-out infinite; }
+svg.lucide:nth-of-type(3n):not(.spin) { animation-delay: -1.6s; }
+svg.lucide:nth-of-type(2n):not(.spin) { animation-delay: -3.1s; }
+:is(a, button):hover svg.lucide:not(.spin) {
+  animation: icon-3d-pop .44s cubic-bezier(.2,.75,.25,1) 1 both;
+}
+@keyframes icon-depth-float {
+  0%, 100% { transform: perspective(600px) rotateX(0) rotateY(0) translateY(0); }
+  50% { transform: perspective(600px) rotateX(8deg) rotateY(-5deg) translateY(-1.5px); }
+}
+@keyframes icon-3d-pop {
+  0% { transform: perspective(480px) rotateX(0) rotateY(0) scale(1); }
+  48% { transform: perspective(480px) rotateX(16deg) rotateY(-12deg) translateY(-2px) scale(1.14); }
+  100% { transform: perspective(480px) rotateX(0) rotateY(0) scale(1.04); }
+}
+
+/* Consistent card lift, shadow and press-pulse feedback across public/admin surfaces. */
+:is(.hero-board, .decision-card, .hero-float, .profile-photo, .profile-monogram,
+  .credential-main, .principle-grid article, .problem-card, .service-preview,
+  .stat-item, .service-detail__facts > div, .electric-line, .service-note,
+  .contact-info--cinematic, .contact-info__notice, .contact-form-card,
+  .legal-review-note, .admin-login-card, .admin-summary, .admin-message,
+  .admin-empty, .admin-state, .cookie-panel, .cookie-option) {
+  box-shadow: 0 12px 30px rgba(14, 33, 63, .11), inset 0 1px 0 rgba(255,255,255,.42);
+  transition: transform .26s cubic-bezier(.2,.75,.25,1), box-shadow .26s ease,
+    border-color .26s ease, background-color .26s ease;
+}
+.hero-board { box-shadow: 0 30px 75px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08); }
+.contact-info--cinematic { box-shadow: 0 24px 65px rgba(12,30,56,.2), inset 0 1px 0 rgba(255,255,255,.08); }
+.admin-login-card { box-shadow: 0 28px 90px rgba(14,33,63,.15), inset 0 1px 0 rgba(255,255,255,.65); }
+.cookie-panel { box-shadow: 0 20px 80px rgba(6,20,43,.24), inset 0 1px 0 rgba(255,255,255,.72); }
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  :is(.hero-board, .decision-card, .hero-float, .profile-photo, .profile-monogram,
+    .credential-main, .principle-grid article, .problem-card, .service-preview,
+    .stat-item, .service-detail__facts > div, .electric-line, .service-note,
+    .contact-info--cinematic, .contact-info__notice, .contact-form-card,
+    .legal-review-note, .admin-login-card, .admin-summary, .admin-message,
+    .admin-empty, .admin-state, .cookie-panel, .cookie-option):hover {
+    transform: translateY(-4px);
+    box-shadow: 0 21px 46px rgba(14,33,63,.17), inset 0 1px 0 rgba(255,255,255,.5);
+    border-color: rgba(111,136,235,.35);
+  }
+  .hero-board:hover { box-shadow: 0 36px 82px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.1); }
+  .contact-info--cinematic:hover { box-shadow: 0 30px 76px rgba(12,30,56,.25), inset 0 1px 0 rgba(255,255,255,.1); }
+  .admin-login-card:hover { box-shadow: 0 34px 96px rgba(14,33,63,.19), inset 0 1px 0 rgba(255,255,255,.7); }
+  .cookie-panel:hover { box-shadow: 0 26px 88px rgba(6,20,43,.28), inset 0 1px 0 rgba(255,255,255,.8); }
+}
+:is(.hero-board, .decision-card, .hero-float, .profile-photo, .profile-monogram,
+  .credential-main, .principle-grid article, .problem-card, .service-preview,
+  .stat-item, .service-detail__facts > div, .electric-line, .service-note,
+  .contact-info--cinematic, .contact-info__notice, .contact-form-card,
+  .legal-review-note, .admin-login-card, .admin-summary, .admin-message,
+  .admin-empty, .admin-state, .cookie-panel, .cookie-option):active {
+  transform: translateY(0) scale(.985);
+  box-shadow: 0 7px 18px rgba(14,33,63,.16), inset 0 1px 0 rgba(255,255,255,.42);
+}
+@media (prefers-reduced-motion: reduce) {
+  svg.lucide:not(.spin) { animation: none !important; }
+  :is(.hero-board, .decision-card, .hero-float, .profile-photo, .profile-monogram,
+    .credential-main, .principle-grid article, .problem-card, .service-preview,
+    .stat-item, .service-detail__facts > div, .electric-line, .service-note,
+    .contact-info--cinematic, .contact-info__notice, .contact-form-card,
+    .legal-review-note, .admin-login-card, .admin-summary, .admin-message,
+    .admin-empty, .admin-state, .cookie-panel, .cookie-option):hover,
+  :is(.hero-board, .decision-card, .hero-float, .profile-photo, .profile-monogram,
+    .credential-main, .principle-grid article, .problem-card, .service-preview,
+    .stat-item, .service-detail__facts > div, .electric-line, .service-note,
+    .contact-info--cinematic, .contact-info__notice, .contact-form-card,
+    .legal-review-note, .admin-login-card, .admin-summary, .admin-message,
+    .admin-empty, .admin-state, .cookie-panel, .cookie-option):active { transform: none !important; }
+}

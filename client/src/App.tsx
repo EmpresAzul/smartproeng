@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect, useLayoutEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import CookieConsent from "@/components/CookieConsent";
@@ -21,6 +21,18 @@ function RouteFallback() {
   const [location] = useLocation();
   const page = PAGE_SEO[normalizePath(location) as keyof typeof PAGE_SEO];
   return <main className="route-fallback"><div className="route-fallback__inner"><span>{page?.eyebrow ?? "Smart ProEng"}</span><h1>{page?.heading ?? "Página não encontrada."}</h1><p>{page?.intro ?? "Use a navegação para explorar os serviços da Smart ProEng."}</p></div></main>;
+}
+
+function ScrollToTop() {
+  const [location] = useLocation();
+
+  useLayoutEffect(() => {
+    if (typeof window === "undefined" || location.includes("#") || window.location.hash) return;
+
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [location]);
+
+  return null;
 }
 
 function Router() {
@@ -53,6 +65,7 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
+          <ScrollToTop />
           <Router />
           <CookieConsent />
         </TooltipProvider>
