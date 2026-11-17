@@ -1,8 +1,10 @@
 export {};
+
 declare global {
   interface Window {
-    __MANUS_CONFIG__?: {
-      projectId: string; oauthPortalUrl: string; apiUrl: string; apiBrowserKey: string;
+    __SMARTPROENG_CONFIG__?: {
+      apiUrl: string;
+      apiBrowserKey: string;
     };
   }
 }

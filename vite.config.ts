@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 import fs from "node:fs";
 import path from "node:path";
 import { defineConfig, type Plugin, type ViteDevServer } from "vite";
-import { publicPlatformScript } from "./server/_core/publicConfig";
+import { publicClientScript } from "./server/_core/publicConfig";
 
 // =============================================================================
 // Manus Debug Collector - Vite Plugin
@@ -149,26 +149,25 @@ function vitePluginManusDebugCollector(): Plugin {
   };
 }
 
-// Static development and static publishing use the same public-value whitelist
-// as Express. Runtime-only secrets never enter the browser bundle. Express keeps
-// serving this path dynamically when the application server is selected.
-function vitePluginPublicPlatformConfig(): Plugin {
+// Static development and static publishing expose only the optional map config.
+// The password and all session-signing material remain server-side.
+function vitePluginPublicClientConfig(): Plugin {
   return {
-    name: "manus-public-platform-config",
+    name: "smartproeng-public-client-config",
     configureServer(server) {
-      server.middlewares.use("/api/platform/config.js", (_req, res) => {
+      server.middlewares.use("/api/client-config.js", (_req, res) => {
         res.setHeader("Content-Type", "application/javascript");
         res.setHeader("Cache-Control", "no-store");
-        res.end(publicPlatformScript());
+        res.end(publicClientScript());
       });
     },
     generateBundle() {
-      this.emitFile({ type: "asset", fileName: "api/platform/config.js", source: publicPlatformScript() });
+      this.emitFile({ type: "asset", fileName: "api/client-config.js", source: publicClientScript() });
     },
   };
 }
 
-const plugins = [vitePluginPublicPlatformConfig(), react(), tailwindcss(), jsxLocPlugin(), vitePluginManusDebugCollector()];
+const plugins = [vitePluginPublicClientConfig(), react(), tailwindcss(), jsxLocPlugin(), vitePluginManusDebugCollector()];
 
 export default defineConfig({
   plugins,

@@ -9,7 +9,12 @@ export default function Portfolio() {
     <SiteLayout>
       <Seo path="/portfolio" />
       <main>
-        <section className="inner-hero inner-hero--light">
+        <section className="inner-hero inner-hero--cinematic inner-hero--portfolio">
+          <div className="cinematic-media cinematic-media--portfolio" aria-hidden="true">
+            <img src="/manus-storage/async-images/NCDTs6Y8K92XGTw5S633HW/image-2.webp" alt="" loading="eager" fetchPriority="high" decoding="async" />
+            <span className="cinematic-media__veil" />
+          </div>
+          <div className="hero-grid" aria-hidden="true" />
           <div className="container inner-hero__inner"><span className="eyebrow">Portfólio de serviços · 05 frentes</span><h1>Cinco frentes.<br /><span>Uma gestão integrada.</span></h1><p>Cada serviço pode ser contratado de forma independente ou combinado com outros, conforme o problema, a operação e o escopo acordado.</p><div className="hero__actions"><PrimaryLink href="/contato">Conversar sobre um escopo</PrimaryLink><a className="button button--line" href="#frentes">Explorar serviços <ArrowRight size={16} /></a></div></div>
         </section>
 

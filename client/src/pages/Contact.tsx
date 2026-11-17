@@ -59,13 +59,19 @@ export default function Contact() {
 
         <section className="section contact-section">
           <div className="container contact-layout">
-            <div className="contact-info">
-              <span className="eyebrow">Canais de atendimento</span><h2>Uma conversa objetiva é o primeiro passo.</h2><p>Compartilhe o contexto e o que precisa resolver. O escopo, prazo e investimento são apresentados por escrito antes de qualquer compromisso.</p>
-              <a className="contact-detail" href={`tel:+${COMPANY.phoneE164}`}><span><Phone size={19} /></span><span><small>Telefone / WhatsApp</small><strong>{COMPANY.phoneDisplay}</strong></span><ArrowUpRight size={16} /></a>
-              <a className="contact-detail" href={`mailto:${COMPANY.email}`}><span><Mail size={19} /></span><span><small>E-mail</small><strong>{COMPANY.email}</strong></span><ArrowUpRight size={16} /></a>
-              <div className="contact-detail contact-detail--static"><span><MapPin size={19} /></span><span><small>Base</small><strong>{COMPANY.city} · {COMPANY.state}</strong></span></div>
-              <div className="contact-detail contact-detail--static"><span><Clock3 size={19} /></span><span><small>Área de atendimento</small><strong>{COMPANY.serviceArea}</strong></span></div>
-              <div className="contact-info__notice"><span className="eyebrow">Smart ProEng</span><p>Engenharia consultiva para indústria, agro, construção, comércio e prestadores de serviços.</p></div>
+            <div className="contact-info contact-info--cinematic">
+              <div className="cinematic-media cinematic-media--contact" aria-hidden="true">
+                <img src="/manus-storage/async-images/NCDTs6Y8K92XGTw5S633HW/image-3.webp" alt="" loading="lazy" decoding="async" />
+                <span className="cinematic-media__veil" />
+              </div>
+              <div className="contact-info__content">
+                <span className="eyebrow eyebrow--mint">Canais de atendimento</span><h2>Uma conversa objetiva é o primeiro passo.</h2><p>Compartilhe o contexto e o que precisa resolver. O escopo, prazo e investimento são apresentados por escrito antes de qualquer compromisso.</p>
+                <a className="contact-detail" href={`tel:+${COMPANY.phoneE164}`}><span><Phone size={19} /></span><span><small>Telefone / WhatsApp</small><strong>{COMPANY.phoneDisplay}</strong></span><ArrowUpRight size={16} /></a>
+                <a className="contact-detail" href={`mailto:${COMPANY.email}`}><span><Mail size={19} /></span><span><small>E-mail</small><strong>{COMPANY.email}</strong></span><ArrowUpRight size={16} /></a>
+                <div className="contact-detail contact-detail--static"><span><MapPin size={19} /></span><span><small>Base</small><strong>{COMPANY.city} · {COMPANY.state}</strong></span></div>
+                <div className="contact-detail contact-detail--static"><span><Clock3 size={19} /></span><span><small>Área de atendimento</small><strong>{COMPANY.serviceArea}</strong></span></div>
+                <div className="contact-info__notice"><span className="eyebrow eyebrow--mint">Smart ProEng</span><p>Engenharia consultiva para indústria, agro, construção, comércio e prestadores de serviços.</p></div>
+              </div>
             </div>
 
             <div className="contact-form-card">

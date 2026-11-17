@@ -1,9 +1,10 @@
-import { COOKIE_NAME } from "@shared/const";
+import { COMPANY } from "@shared/siteContent";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { getSessionCookieOptions } from "./_core/cookies";
+import { ADMIN_SESSION_COOKIE, ADMIN_SESSION_TTL_MS, createAdminSessionToken, isAdminPasswordConfigured, isSafeBrowserOrigin, verifyAdminCredentials } from "./_core/adminAuth";
 import { systemRouter } from "./_core/systemRouter";
-import { adminProcedure, publicProcedure, router } from "./_core/trpc";
+import { adminMutation, adminProcedure, publicProcedure, router } from "./_core/trpc";
 import * as db from "./db";
 
 const contactInput = z.object({
@@ -27,6 +28,31 @@ type ContactInput = z.infer<typeof contactInput>;
 const attempts = new Map<string, number[]>();
 const RATE_WINDOW_MS = 10 * 60 * 1000;
 const MAX_CONTACTS_PER_WINDOW = 4;
+const loginAttempts = new Map<string, number[]>();
+const LOGIN_WINDOW_MS = 15 * 60 * 1000;
+const MAX_LOGIN_ATTEMPTS = 8;
+
+function registerLoginAttempt(address: string): boolean {
+  const now = Date.now();
+  const recent = (loginAttempts.get(address) ?? []).filter(time => now - time < LOGIN_WINDOW_MS);
+  if (recent.length >= MAX_LOGIN_ATTEMPTS) {
+    loginAttempts.set(address, recent);
+    return false;
+  }
+  recent.push(now);
+  loginAttempts.set(address, recent);
+  if (loginAttempts.size > 5000) {
+    for (const [key, times] of loginAttempts) {
+      if (!times.some(time => now - time < LOGIN_WINDOW_MS)) loginAttempts.delete(key);
+    }
+  }
+  return true;
+}
+
+const loginInput = z.object({
+  email: z.string().trim().email().max(254).transform(value => value.toLowerCase()),
+  password: z.string().min(1).max(1024),
+});
 
 function isRateLimited(address: string): boolean {
   const now = Date.now();
@@ -53,10 +79,34 @@ function nullable(value: string | undefined): string | null {
 export const appRouter = router({
   system: systemRouter,
   auth: router({
-    me: publicProcedure.query(opts => opts.ctx.user),
-    logout: publicProcedure.mutation(({ ctx }) => {
+    me: publicProcedure.query(({ ctx }) => {
+      const user = ctx.user;
+      return user ? { id: user.id, name: user.name, email: user.email, role: user.role } : null;
+    }),
+    login: publicProcedure.input(loginInput).mutation(({ ctx, input }) => {
+      const address = ctx.req.ip || ctx.req.socket.remoteAddress || "unknown";
+      if (!registerLoginAttempt(address)) {
+        throw new TRPCError({ code: "TOO_MANY_REQUESTS", message: "Muitas tentativas. Aguarde alguns minutos e tente novamente." });
+      }
+      if (!isAdminPasswordConfigured()) {
+        throw new TRPCError({ code: "PRECONDITION_FAILED", message: "O acesso administrativo ainda não foi configurado." });
+      }
+      const origin = ctx.req.get("origin") ?? "";
+      if (!isSafeBrowserOrigin(origin) || !verifyAdminCredentials(input.email, input.password, COMPANY.email)) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "E-mail ou senha inválidos." });
+      }
+      const token = createAdminSessionToken(origin);
+      if (!token) {
+        throw new TRPCError({ code: "PRECONDITION_FAILED", message: "O acesso administrativo não está disponível." });
+      }
+      loginAttempts.delete(address);
+      ctx.res.setHeader("Cache-Control", "no-store");
+      ctx.res.cookie(ADMIN_SESSION_COOKIE, token, { ...getSessionCookieOptions(ctx.req), maxAge: ADMIN_SESSION_TTL_MS });
+      return { success: true } as const;
+    }),
+    logout: adminMutation.mutation(({ ctx }) => {
       const cookieOptions = getSessionCookieOptions(ctx.req);
-      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
+      ctx.res.clearCookie(ADMIN_SESSION_COOKIE, { ...cookieOptions, maxAge: -1 });
       return { success: true } as const;
     }),
   }),
@@ -96,11 +146,11 @@ export const appRouter = router({
     listMessages: adminProcedure
       .input(z.object({ cursor: z.number().int().positive().nullish() }))
       .query(({ input }) => db.listContactMessages(input.cursor)),
-    updateStatus: adminProcedure.input(z.object({
+    updateStatus: adminMutation.input(z.object({
       id: z.number().int().positive(),
       status: z.enum(["new", "in_progress", "responded"]),
     })).mutation(({ input }) => db.updateContactMessageStatus(input.id, input.status)),
-    deleteMessage: adminProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ input }) => db.deleteContactMessage(input.id)),
+    deleteMessage: adminMutation.input(z.object({ id: z.number().int().positive() })).mutation(({ input }) => db.deleteContactMessage(input.id)),
   }),
 });
 
