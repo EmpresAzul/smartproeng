@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
+import { createRouteDocument } from "./seo";
 
 export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
@@ -40,7 +41,12 @@ export async function setupVite(app: Express, server: Server) {
         `src="/src/main.tsx?v=${nanoid()}"`
       );
       const page = await vite.transformIndexHtml(url, template);
-      res.status(200).set({ "Content-Type": "text/html" }).end(page);
+      const document = createRouteDocument(page, new URL(url, "http://localhost").pathname);
+      if (new URL(url, "http://localhost").pathname === "/admgerencia" || document.status === 404) {
+        res.setHeader("X-Robots-Tag", "noindex, nofollow");
+        res.setHeader("Cache-Control", "private, no-store");
+      }
+      res.status(document.status).set({ "Content-Type": "text/html; charset=utf-8" }).end(document.html);
     } catch (e) {
       vite.ssrFixStacktrace(e as Error);
       next(e);
@@ -59,15 +65,22 @@ export function serveStatic(app: Express) {
     );
   }
 
-  app.use(express.static(distPath));
+  app.use(express.static(distPath, { index: false }));
+  const template = fs.readFileSync(path.resolve(distPath, "index.html"), "utf-8");
 
-  // the app's not-found page keeps a real 404 status for crawlers
-  app.get("/404", (_req, res) => {
-    res.status(404).sendFile(path.resolve(distPath, "index.html"));
+  // Public pages receive route-specific HTML for crawlers. Admin and unknown
+  // paths never expose inbox data and are marked noindex at both HTTP and HTML.
+  app.use("*", (req, res, next) => {
+    if (req.method !== "GET" && req.method !== "HEAD") return next();
+    // `req.path` is relative to a wildcard mount in Express and can collapse
+    // to `/`; use originalUrl so direct production requests retain their route.
+    const pathname = new URL(req.originalUrl, "http://localhost").pathname;
+    const document = createRouteDocument(template, pathname);
+    if (pathname === "/admgerencia" || document.status === 404) {
+      res.setHeader("X-Robots-Tag", "noindex, nofollow");
+      res.setHeader("Cache-Control", "private, no-store");
+    }
+    res.status(document.status).type("html").send(document.html);
   });
-
-  // fall through to index.html if the file doesn't exist
-  app.use("*", (_req, res) => {
-    res.sendFile(path.resolve(distPath, "index.html"));
-  });
+  app.use((req, res) => res.status(404).json({ error: "Not found" }));
 }

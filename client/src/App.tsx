@@ -1,38 +1,60 @@
+import { lazy, Suspense, useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import CookieConsent from "@/components/CookieConsent";
+import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
+import { normalizePath, PAGE_SEO } from "@shared/siteContent";
+
+const Home = lazy(() => import("@/pages/Home"));
+const About = lazy(() => import("@/pages/About"));
+const Portfolio = lazy(() => import("@/pages/Portfolio"));
+const Contact = lazy(() => import("@/pages/Contact"));
+const PrivacyPage = lazy(() => import("@/pages/Legal").then(module => ({ default: module.PrivacyPage })));
+const TermsPage = lazy(() => import("@/pages/Legal").then(module => ({ default: module.TermsPage })));
+const CookiesPage = lazy(() => import("@/pages/Legal").then(module => ({ default: module.CookiesPage })));
+const Admin = lazy(() => import("@/pages/Admin"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
+
+function RouteFallback() {
+  const [location] = useLocation();
+  const page = PAGE_SEO[normalizePath(location) as keyof typeof PAGE_SEO];
+  return <main className="route-fallback"><div className="route-fallback__inner"><span>{page?.eyebrow ?? "Smart ProEng"}</span><h1>{page?.heading ?? "Página não encontrada."}</h1><p>{page?.intro ?? "Use a navegação para explorar os serviços da Smart ProEng."}</p></div></main>;
+}
 
 function Router() {
-  // make sure to consider if you need authentication for certain routes
   return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
+    <Suspense fallback={<RouteFallback />}>
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/sobre" component={About} />
+        <Route path="/portfolio" component={Portfolio} />
+        <Route path="/contato" component={Contact} />
+        <Route path="/privacidade" component={PrivacyPage} />
+        <Route path="/termos" component={TermsPage} />
+        <Route path="/cookies" component={CookiesPage} />
+        <Route path="/admgerencia" component={Admin} />
+        <Route path="/404" component={NotFound} />
+        <Route component={NotFound} />
+      </Switch>
+    </Suspense>
   );
 }
 
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
-
 function App() {
+  useEffect(() => {
+    document.documentElement.dataset.appReady = "true";
+    return () => { delete document.documentElement.dataset.appReady; };
+  }, []);
+
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
+      <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
           <Router />
+          <CookieConsent />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
