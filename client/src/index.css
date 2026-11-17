@@ -701,3 +701,37 @@ html[data-app-ready="true"] .seo-snapshot { display: none; }
 @media (max-width: 390px) {
   .profile-photo, .profile-photo > img { min-height: 285px; }
 }
+
+
+/* Shared cinematic first-fold treatment for Home, About, Contact and Portfolio. */
+.hero--home .cinematic-media > img { object-position: 68% 52%; }
+.hero--home .cinematic-media__veil { background: linear-gradient(90deg, rgba(8,21,43,.56) 0%, rgba(9,24,49,.41) 35%, rgba(10,27,53,.22) 70%, rgba(10,25,48,.15) 100%), linear-gradient(0deg, rgba(7,18,37,.24), transparent 58%); }
+.hero--home .hero-board { background: linear-gradient(148deg, rgba(17,39,70,.72), rgba(9,22,43,.77)); }
+.hero-photo-note--home { display: block; width: fit-content; margin-top: 9px; color: rgba(239,245,255,.66); font-size: 8px; line-height: 1.55; }
+.inner-hero--cinematic .cinematic-media__veil { background: linear-gradient(90deg, rgba(8,21,43,.64) 0%, rgba(9,24,49,.46) 38%, rgba(10,27,53,.24) 72%, rgba(10,25,48,.15) 100%), linear-gradient(0deg, rgba(7,18,37,.24), transparent 58%); }
+.inner-hero--cinematic .hero-photo-note { display: block; width: fit-content; margin-top: 12px; color: rgba(239,245,255,.76); font-size: 9px; line-height: 1.55; text-shadow: 0 2px 12px rgba(2,10,22,.45); }
+.inner-hero--about { min-height: 455px; }
+.inner-hero--about .cinematic-media > img { object-position: 72% 48%; }
+.inner-hero--contact { min-height: 425px; }
+.inner-hero--contact .cinematic-media > img { object-position: 68% 54%; }
+.inner-hero--cinematic .contact-hero__note { margin-top: 18px; color: rgba(235,243,255,.78); }
+.inner-hero--cinematic .contact-hero__note svg { color: #45c8b4; }
+.inner-hero--cinematic .contact-hero__note a { color: #c9d4ff; }
+.contact-info--cinematic { min-height: 0; background: radial-gradient(ellipse at 100% 0%, rgba(24,182,165,.16), transparent 43%), linear-gradient(145deg, #102747 0%, #09172d 100%); }
+.contact-info--cinematic::after { position: absolute; top: -85px; right: -80px; width: 225px; height: 225px; border: 1px solid rgba(172,190,255,.16); border-radius: 50%; box-shadow: 0 0 0 26px rgba(130,156,255,.035), 0 0 0 52px rgba(24,182,165,.025); content: ""; pointer-events: none; }
+.contact-info--cinematic .contact-info__content { z-index: 1; }
+@media (max-width: 850px) {
+  .inner-hero--about { min-height: 430px; }
+  .inner-hero--contact { min-height: 410px; }
+}
+@media (max-width: 680px) {
+  .hero--home .cinematic-media__veil { background: linear-gradient(90deg, rgba(8,21,43,.73) 0%, rgba(9,24,49,.54) 58%, rgba(10,27,53,.35) 100%), linear-gradient(0deg, rgba(7,18,37,.27), transparent 68%); }
+  .inner-hero--cinematic .cinematic-media__veil { background: linear-gradient(90deg, rgba(8,21,43,.72) 0%, rgba(9,24,49,.51) 60%, rgba(10,27,53,.32) 100%), linear-gradient(0deg, rgba(7,18,37,.27), transparent 70%); }
+  .inner-hero--about, .inner-hero--contact { min-height: 405px; }
+  .inner-hero--about .cinematic-media > img { object-position: 72% center; }
+  .inner-hero--contact .cinematic-media > img { object-position: 70% center; }
+  .contact-info--cinematic { min-height: 0; }
+}
+
+.hero-photo-note a, .inner-hero--cinematic .hero-photo-note a { color: #c8d4ff; text-decoration: underline; text-decoration-color: rgba(200,212,255,.52); text-underline-offset: 2px; }
+.hero-photo-note a:hover, .inner-hero--cinematic .hero-photo-note a:hover { color: #fff; }

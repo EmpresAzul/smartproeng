@@ -21,13 +21,16 @@
 - [x] **Remover login externo visível.** O fluxo OAuth antigo e seus componentes sem uso foram removidos; `/admgerencia` mostra e-mail/senha da empresa. Páginas públicas, menu e painel não exibem botão ou rótulo de login externo. O badge da plataforma permanece oculto.
 - [x] **Manter o painel protegido.** Senha validada no servidor, cookie próprio `HttpOnly`, `Secure`, `SameSite=None`, sessão curta vinculada à origem, proteção de origem nas mutações, limite de tentativas e logout; testes de login e tentativas cross-origin não gravam dados reais.
 - [~] **Verificação da credencial no runtime.** O segredo foi cadastrado pelo cartão seguro. O processo local de desenvolvimento não recebeu `SMARTPROENG_ADMIN_PASSWORD`; o endpoint falha fechado com HTTP 412. A senha real não foi lida nem copiada. Ainda é necessário validar a variável no runtime que atende o Preview ou a publicação.
-- [x] **Fotografia da Home.** A Home usa uma foto industrial noturna do Unsplash, otimizada para WebP, no lugar do marcador de geração.
+- [x] **Fotografia da Home.** O fundo de chão de fábrica foi removido e substituído por uma foto noturna de cidade e ponte de Julius Carmine / Unsplash, otimizada e creditada. A página esclarece que a cena de Tianjin não representa obra ou local da Smart ProEng.
 - [x] **Fotografia de Sobre.** A página Sobre tem uma foto de contexto profissional com legenda explícita: a imagem não retrata Tiago Arré nem representa obra da Smart ProEng.
 - [x] **Fotografia do Portfólio.** A foto anterior foi substituída por uma imagem licenciada de ponte em construção, sem lettering incorreto embutido; o hero esclarece que a foto é ilustrativa e não apresenta um case da empresa.
 - [x] **Overlays de todo o site.** Opacidade reduzida nos fundos da Home, Portfólio e Contato; blur da Home removido e painel informativo mais translúcido. Texto, CTAs e formulário seguem legíveis em desktop e celular.
 - [x] **Créditos/licenças.** Autores e URLs de origem estão em `ASSET_CREDITS.md`; fotos foram reduzidas e convertidas para WebP antes do upload ao armazenamento do projeto.
 - [x] **Responsividade preservada.** Menu, CTAs, formulário, UTMs, consentimento, tipografia, acessibilidade e redução de movimento seguem funcionais.
-- [x] **Validação visual/técnica.** Capturas verificaram Home, Sobre, Portfólio e Contato em 1440 px e 375 px; `pnpm check`, `pnpm test` (16 testes) e `pnpm build` passaram. O build ainda emite uma advertência informativa do Vite para `/api/client-config.js`.
+- [x] **Validação visual/técnica.** `pnpm check`, `pnpm test` (16 testes), `pnpm build` e `git diff --check` passaram; capturas de desktop e 375 px mostram as fotos e mantêm títulos, CTAs e formulário legíveis. O build emite apenas a advertência informativa do Vite para `/api/client-config.js`.
+- [x] **Background novo da Home.** O hero agora usa uma fotografia urbana licenciada de ponte e skyline, com composição cinematográfica navy e espaço para headline/CTA, sem chão de fábrica.
+- [x] **Hero cinematográfico em Sobre e Contato.** O primeiro bloco das duas páginas segue a estrutura full-bleed do Portfólio. Sobre usa a foto já creditada; Contato usa o fundo técnico armazenado no projeto. Capturas desktop e mobile confirmaram legibilidade; o formulário, avisos e campos foram preservados.
+- [x] **Atualizar GitHub.** As alterações estão prontas para integrar ao `main` com avanço fast-forward, sem sobrescrever commits; imagens e créditos estão versionados. A autopublicação está ativada e pode ser iniciada pelo checkpoint.
 
 ## Estado de publicação e arquivos do proprietário
 

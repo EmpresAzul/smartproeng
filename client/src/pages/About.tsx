@@ -9,17 +9,24 @@ export default function About() {
     <SiteLayout>
       <Seo path="/sobre" />
       <main>
-        <section className="inner-hero inner-hero--navy">
+        <section className="inner-hero inner-hero--cinematic inner-hero--about">
+          <div className="cinematic-media cinematic-media--about" aria-hidden="true">
+            <img src="/manus-storage/about-fieldwork_dd015585.webp" alt="" loading="eager" fetchPriority="high" decoding="async" />
+            <span className="cinematic-media__veil" />
+          </div>
           <div className="hero-grid" aria-hidden="true" />
-          <div className="container inner-hero__inner"><span className="eyebrow eyebrow--mint">Eng. Tiago Arré · {COMPANY.city}, {COMPANY.state}</span><h1>Técnica de engenheiro.<br /><span>Visão de quem já administrou empresa.</span></h1><p>Conheça a trajetória que conecta engenharia elétrica, segurança, projetos e gestão à realidade de quem precisa decidir.</p><div className="inner-hero__meta"><span><ShieldCheck size={16} /> Eng. {ENGINEER.name}</span><span><BriefcaseBusiness size={16} /> Experiência em engenharia e gestão</span></div></div>
+          <div className="container inner-hero__inner">
+            <span className="eyebrow eyebrow--mint">Eng. Tiago Arré · {COMPANY.city}, {COMPANY.state}</span>
+            <h1>Técnica de engenheiro.<br /><span>Visão de quem já administrou empresa.</span></h1>
+            <p>Conheça a trajetória que conecta engenharia elétrica, segurança, projetos e gestão à realidade de quem precisa decidir.</p>
+            <div className="inner-hero__meta"><span><ShieldCheck size={16} /> Eng. {ENGINEER.name}</span><span><BriefcaseBusiness size={16} /> Experiência em engenharia e gestão</span></div>
+            <small className="hero-photo-note"><a href="https://unsplash.com/photos/construction-workers-are-inspecting-plans-on-the-jobsite-tEepjQhromE" target="_blank" rel="noreferrer">Foto de Ronnakorn Triraganon / Unsplash</a>. Imagem ilustrativa; não retrata Tiago Arré, equipe ou obra da Smart ProEng.</small>
+          </div>
         </section>
 
         <section className="section about-profile">
           <div className="container about-profile__grid">
-            <figure className="profile-photo">
-              <img src="/manus-storage/about-fieldwork_dd015585.webp" alt="Dois profissionais com capacete analisando o trabalho em uma obra." loading="lazy" decoding="async" />
-              <figcaption><strong>Imagem ilustrativa</strong><span>Não retrata o Eng. Tiago Arré nem representa uma obra da Smart ProEng.</span><a href="https://unsplash.com/photos/construction-workers-are-inspecting-plans-on-the-jobsite-tEepjQhromE" target="_blank" rel="noreferrer">Foto: Ronnakorn Triraganon / Unsplash</a></figcaption>
-            </figure>
+            <div className="profile-monogram" aria-hidden="true"><div className="profile-monogram__grid" /><span>TA</span><small>ENGENHARIA · PROJETOS · GESTÃO</small><i className="profile-monogram__line" /></div>
             <div className="about-copy"><span className="eyebrow">Eng. Tiago Arré</span><h2>Engenharia com leitura de operação.</h2><p className="lead">Engenheiro eletricista com pós-graduação em Engenharia de Segurança do Trabalho e em Engenharia Ferroviária, além de MBA em Gerenciamento de Projetos na Construção Civil.</p><p>Ao longo da trajetória, atuou como gerente de implantação de grandes obras, da infraestrutura à entrega final, e no gerenciamento e fiscalização de obras industriais. Também coordenou equipes técnicas de instalação e manutenção de climatização industrial e implantou sistemas e softwares em empresas.</p><p>De 2011 a 2024, administrou empresas nas áreas financeira, contábil e comercial. Essa experiência ajuda a traduzir questões técnicas para a linguagem de quem paga a conta: custo, prazo, risco e retorno.</p><PrimaryLink href="/contato">Fale com o Engenheiro Tiago</PrimaryLink></div>
           </div>
         </section>

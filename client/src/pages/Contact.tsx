@@ -53,17 +53,18 @@ export default function Contact() {
     <SiteLayout>
       <Seo path="/contato" />
       <main>
-        <section className="inner-hero inner-hero--light contact-hero">
-          <div className="container inner-hero__inner"><span className="eyebrow">Vamos conversar</span><h1>Conte o problema.<br /><span>Vamos entender o cenário.</span></h1><p>Informe o tipo de operação, a cidade e o que precisa resolver. A primeira conversa ajuda a indicar o serviço adequado.</p><div className="contact-hero__note"><ShieldCheck size={17} /><span>Seus dados são usados para responder a esta solicitação. <Link href="/privacidade">Veja como tratamos suas informações.</Link></span></div></div>
+        <section className="inner-hero inner-hero--cinematic inner-hero--contact contact-hero">
+          <div className="cinematic-media cinematic-media--contact" aria-hidden="true">
+            <img src="/manus-storage/async-images/NCDTs6Y8K92XGTw5S633HW/image-3.webp" alt="" loading="eager" fetchPriority="high" decoding="async" />
+            <span className="cinematic-media__veil" />
+          </div>
+          <div className="hero-grid" aria-hidden="true" />
+          <div className="container inner-hero__inner"><span className="eyebrow eyebrow--mint">Vamos conversar</span><h1>Conte o problema.<br /><span>Vamos entender o cenário.</span></h1><p>Informe o tipo de operação, a cidade e o que precisa resolver. A primeira conversa ajuda a indicar o serviço adequado.</p><div className="contact-hero__note"><ShieldCheck size={17} /><span>Seus dados são usados para responder a esta solicitação. <Link href="/privacidade">Veja como tratamos suas informações.</Link></span></div><small className="hero-photo-note">Imagem ilustrativa de uma análise de projeto; não representa cliente ou serviço executado.</small></div>
         </section>
 
         <section className="section contact-section">
           <div className="container contact-layout">
             <div className="contact-info contact-info--cinematic">
-              <div className="cinematic-media cinematic-media--contact" aria-hidden="true">
-                <img src="/manus-storage/async-images/NCDTs6Y8K92XGTw5S633HW/image-3.webp" alt="" loading="lazy" decoding="async" />
-                <span className="cinematic-media__veil" />
-              </div>
               <div className="contact-info__content">
                 <span className="eyebrow eyebrow--mint">Canais de atendimento</span><h2>Uma conversa objetiva é o primeiro passo.</h2><p>Compartilhe o contexto e o que precisa resolver. O escopo, prazo e investimento são apresentados por escrito antes de qualquer compromisso.</p>
                 <a className="contact-detail" href={`tel:+${COMPANY.phoneE164}`}><span><Phone size={19} /></span><span><small>Telefone / WhatsApp</small><strong>{COMPANY.phoneDisplay}</strong></span><ArrowUpRight size={16} /></a>

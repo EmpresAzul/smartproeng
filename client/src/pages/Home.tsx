@@ -14,7 +14,7 @@ export default function Home() {
       <main>
         <section className="hero hero--home">
           <div className="cinematic-media cinematic-media--home" aria-hidden="true">
-            <img src="/manus-storage/cinematic-home_91aa28be.webp" alt="" fetchPriority="high" decoding="async" />
+            <img src="/manus-storage/home-city-hero_abea5a93.webp" alt="" fetchPriority="high" decoding="async" />
             <span className="cinematic-media__veil" />
           </div>
           <div className="hero-grid" aria-hidden="true" />
@@ -28,6 +28,7 @@ export default function Home() {
                 <Link href={campaignHref("/portfolio")} className="button button--ghost">Ver os serviços <ArrowUpRight size={17} aria-hidden="true" /></Link>
               </div>
               <div className="hero__trust"><ShieldCheck size={17} aria-hidden="true" /><span>Do diagnóstico à entrega, com escopo claro e contato direto com o engenheiro.</span></div>
+              <small className="hero-photo-note hero-photo-note--home">Imagem ilustrativa de Tianjin, China; foto de <a href="https://unsplash.com/photos/a-view-of-a-city-at-night-with-a-bridge-in-the-foreground-o_fSNj4IAMI" target="_blank" rel="noreferrer">Julius Carmine / Unsplash</a>. Não representa obra ou localização da Smart ProEng.</small>
             </div>
             <div className="hero-board-wrap" aria-label="Abordagem Smart ProEng: custo, prazo e risco conectados">
               <div className="hero-board__corner hero-board__corner--top" aria-hidden="true" />
