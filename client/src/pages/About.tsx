@@ -16,7 +16,10 @@ export default function About() {
 
         <section className="section about-profile">
           <div className="container about-profile__grid">
-            <div className="profile-monogram" aria-label="Monograma TA, representando Tiago Arré"><div className="profile-monogram__grid" aria-hidden="true" /><span>TA</span><small>ENGENHEIRO · SMART PROENG</small><div className="profile-monogram__line" aria-hidden="true" /></div>
+            <figure className="profile-photo">
+              <img src="/manus-storage/about-fieldwork_dd015585.webp" alt="Dois profissionais com capacete analisando o trabalho em uma obra." loading="lazy" decoding="async" />
+              <figcaption><strong>Imagem ilustrativa</strong><span>Não retrata o Eng. Tiago Arré nem representa uma obra da Smart ProEng.</span><a href="https://unsplash.com/photos/construction-workers-are-inspecting-plans-on-the-jobsite-tEepjQhromE" target="_blank" rel="noreferrer">Foto: Ronnakorn Triraganon / Unsplash</a></figcaption>
+            </figure>
             <div className="about-copy"><span className="eyebrow">Eng. Tiago Arré</span><h2>Engenharia com leitura de operação.</h2><p className="lead">Engenheiro eletricista com pós-graduação em Engenharia de Segurança do Trabalho e em Engenharia Ferroviária, além de MBA em Gerenciamento de Projetos na Construção Civil.</p><p>Ao longo da trajetória, atuou como gerente de implantação de grandes obras, da infraestrutura à entrega final, e no gerenciamento e fiscalização de obras industriais. Também coordenou equipes técnicas de instalação e manutenção de climatização industrial e implantou sistemas e softwares em empresas.</p><p>De 2011 a 2024, administrou empresas nas áreas financeira, contábil e comercial. Essa experiência ajuda a traduzir questões técnicas para a linguagem de quem paga a conta: custo, prazo, risco e retorno.</p><PrimaryLink href="/contato">Fale com o Engenheiro Tiago</PrimaryLink></div>
           </div>
         </section>

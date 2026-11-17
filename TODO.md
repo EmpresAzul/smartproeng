@@ -2,9 +2,9 @@
 
 ## Direção visual atual
 
-- A logo continua sendo a referência: azul-marinho profundo, azul-lavanda, branco e verde-água. O amarelo do mockup antigo continua fora da identidade principal.
-- Linguagem visual de cinema documental de engenharia: fotografia ampla com profundidade e luz de recorte, fundos em camadas, composição editorial, halos discretos e overlays escuros para manter leitura; Sora em headlines e Montserrat em texto.
-- Imagens conceituais são fundos decorativos gerados para o site, não evidência de obras, clientes ou projetos executados pela Smart ProEng.
+- A logo continua como referência: azul-marinho profundo, azul-lavanda, branco e verde-água; o amarelo do mockup antigo não integra a paleta principal.
+- Linguagem visual de cinema documental de engenharia: fotografia ampla com profundidade e luz de recorte, fundos em camadas, composição editorial e halos discretos. Overlays calibrados para manter leitura sem esconder as fotos; Sora em headlines e Montserrat em texto.
+- Fotografias são ilustrativas, não retratos do Eng. Tiago Arré nem evidência de obras, clientes ou projetos executados pela Smart ProEng.
 
 ## Resultados anteriores — já verificados
 
@@ -14,21 +14,23 @@
 - [x] **Formulário de contato.** Solicitações são validadas e armazenadas no banco gerenciado; parâmetros UTM acompanham a jornada e ficam ligados à solicitação.
 - [x] **Painel de mensagens.** `/admgerencia` tem autorização no servidor, lista paginada, estados, busca e exclusão confirmada; acesso anônimo à API foi negado.
 - [x] **Privacidade/cookies.** Rodapé contém `/privacidade`, `/termos` e `/cookies`; o aviso aceita, recusa ou personaliza categorias opcionais. As páginas legais estão identificadas como minutas para validação; analytics de plataforma e pixels de terceiros não estão conectados.
-- [x] **Qualidade técnica anterior.** `pnpm check`, `pnpm test` (8 testes) e `pnpm build` passaram; smoke test verificou as rotas, 404 real, metadados e o painel `noindex`.
-- [x] **Checkpoint anterior:** `ea0524f1c4fbdd9fdb8ad6411a8fd6d36a461b3a`. Desde então, o proprietário acrescentou guias de hospedagem e `napoleon.zip`; esses arquivos devem ser preservados.
+- [x] **Qualidade técnica anterior.** Typecheck, testes e build passaram; smoke test verificou rotas, 404 real, metadados e painel `noindex`.
 
 ## Pedido atual — estado da implementação
 
-- [x] **Login visível.** O fluxo OAuth antigo e seus componentes sem uso foram removidos; a área `/admgerencia` mostra e-mail/senha da empresa. As páginas públicas, menu e painel não exibem botão/rótulo de login externo. O badge da plataforma permanece oculto.
-- [x] **Proteções próprias do painel.** A implementação valida a senha administrativa no servidor, usa cookie próprio `HttpOnly`, `Secure`, `SameSite=None`, sessão curta vinculada à origem, proteção de origem nas mutações, limitação de tentativas e logout. Testes exercitam login positivo/negativo e tentativas cross-origin sem gravar dados reais.
-- [~] **Verificação de credencial em Preview.** A senha consta como configurada no cartão secreto do Webdev para `all`, mas o processo de desenvolvimento atual não recebeu `SMARTPROENG_ADMIN_PASSWORD`; o endpoint falha fechado com HTTP 412. A senha real não foi lida nem copiada. A disponibilidade precisa ser validada no runtime publicado, ou o cartão precisa sincronizar a variável para o desenvolvimento antes de considerar o acesso validado.
-- [~] **Redesenho cinematográfico.** Os três fundos originais estão integrados à Home, ao Portfólio e ao painel de Contato, com overlays navy/lavanda/verde-água, comportamento responsivo e animação desativável. Capturas desktop e mobile verificaram a composição; a foto do Portfólio aparece, mas a imagem da Home ainda mostra o marcador de geração do serviço de imagens e não deve ser considerada pronta enquanto não for substituída pelo resultado final.
-- [x] **Conversão e responsividade preservadas.** Menu, CTAs, formulário, UTMs, consentimento, tipografia e conteúdo institucional continuam no fluxo; imagens usam prioridades/`loading` e o movimento respeita `prefers-reduced-motion`.
-- [x] **Validação de código.** `pnpm check`, `pnpm test` (16 testes) e `pnpm build` passaram. Smoke test verificou manifesto com 8 rotas, páginas 200 e endpoint de configuração do cliente. A compilação emite uma advertência informativa do Vite para o script público de configuração.
-- [x] **Checkpoint do código.** O commit `a29f0cc3a014bfa6dc5d8abef90c56d9f81498a2` foi confirmado em `origin/main`; a publicação automática desse código foi submetida. O estado final deve ser consultado no Dashboard, sem presumir que o site já esteja publicado. O pacote de hospedagem `napoleon.zip` e os guias do proprietário foram preservados e não foram reconstruídos.
+- [x] **Remover login externo visível.** O fluxo OAuth antigo e seus componentes sem uso foram removidos; `/admgerencia` mostra e-mail/senha da empresa. Páginas públicas, menu e painel não exibem botão ou rótulo de login externo. O badge da plataforma permanece oculto.
+- [x] **Manter o painel protegido.** Senha validada no servidor, cookie próprio `HttpOnly`, `Secure`, `SameSite=None`, sessão curta vinculada à origem, proteção de origem nas mutações, limite de tentativas e logout; testes de login e tentativas cross-origin não gravam dados reais.
+- [~] **Verificação da credencial no runtime.** O segredo foi cadastrado pelo cartão seguro. O processo local de desenvolvimento não recebeu `SMARTPROENG_ADMIN_PASSWORD`; o endpoint falha fechado com HTTP 412. A senha real não foi lida nem copiada. Ainda é necessário validar a variável no runtime que atende o Preview ou a publicação.
+- [x] **Fotografia da Home.** A Home usa uma foto industrial noturna do Unsplash, otimizada para WebP, no lugar do marcador de geração.
+- [x] **Fotografia de Sobre.** A página Sobre tem uma foto de contexto profissional com legenda explícita: a imagem não retrata Tiago Arré nem representa obra da Smart ProEng.
+- [x] **Fotografia do Portfólio.** A foto anterior foi substituída por uma imagem licenciada de ponte em construção, sem lettering incorreto embutido; o hero esclarece que a foto é ilustrativa e não apresenta um case da empresa.
+- [x] **Overlays de todo o site.** Opacidade reduzida nos fundos da Home, Portfólio e Contato; blur da Home removido e painel informativo mais translúcido. Texto, CTAs e formulário seguem legíveis em desktop e celular.
+- [x] **Créditos/licenças.** Autores e URLs de origem estão em `ASSET_CREDITS.md`; fotos foram reduzidas e convertidas para WebP antes do upload ao armazenamento do projeto.
+- [x] **Responsividade preservada.** Menu, CTAs, formulário, UTMs, consentimento, tipografia, acessibilidade e redução de movimento seguem funcionais.
+- [x] **Validação visual/técnica.** Capturas verificaram Home, Sobre, Portfólio e Contato em 1440 px e 375 px; `pnpm check`, `pnpm test` (16 testes) e `pnpm build` passaram. O build ainda emite uma advertência informativa do Vite para `/api/client-config.js`.
 
-## Estado de publicação e credenciais
+## Estado de publicação e arquivos do proprietário
 
-- `publishing.auto_publish` está **ativado** na configuração atual; publicação final acompanha o Dashboard. As instruções próprias do projeto também descrevem hospedagem externa/cPanel em `smartproeng.spweb.digital`; o arquivo `napoleon.zip` existente não foi alterado por este pedido.
-- Para concluir o login sem fornecedor externo, o proprietário precisa definir a senha no cartão seguro solicitado; recomenda-se senha longa e exclusiva gerada por gerenciador de senhas. O e-mail de acesso planejado é o endereço institucional já cadastrado para a Smart ProEng.
-- Antes de lançar campanhas, permanecem pendentes: confirmação de CREA/UF e atribuições; aprovação final das minutas, retenção e subprocessadores; domínio público, tags opcionais e medição real de PageSpeed (escala máxima 100).
+- `publishing.auto_publish` está **ativado**; um checkpoint aceito em `main` pode disparar publicação automática. A conclusão deve ser consultada no Dashboard; não presumir que o site já está publicado.
+- As instruções do proprietário também descrevem hospedagem externa/cPanel em `smartproeng.spweb.digital`. O arquivo `napoleon.zip` e os demais guias do proprietário foram preservados, sem reconstrução nesta etapa.
+- Antes das campanhas pagas, permanecem pendentes: confirmar CREA/UF e atribuições, aprovar as minutas legais, validar subprocessadores/retenção, confirmar o domínio público, decidir tags opcionais e medir PageSpeed real (a escala oficial máxima é 100).
