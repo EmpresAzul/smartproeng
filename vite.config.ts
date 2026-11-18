@@ -161,9 +161,6 @@ function vitePluginPublicClientConfig(): Plugin {
         res.end(publicClientScript());
       });
     },
-    generateBundle() {
-      this.emitFile({ type: "asset", fileName: "api/client-config.js", source: publicClientScript() });
-    },
   };
 }
 

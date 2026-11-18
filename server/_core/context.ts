@@ -1,5 +1,5 @@
 import type { CreateExpressContextOptions } from "@trpc/server/adapters/express";
-import { COMPANY, ENGINEER } from "@shared/siteContent";
+import { COMPANY, ENGINEER } from "../../shared/siteContent";
 import type { User } from "../../drizzle/schema";
 import { readAdminSession } from "./adminAuth";
 

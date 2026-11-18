@@ -55,7 +55,7 @@ export default function Contact() {
       <main>
         <section className="inner-hero inner-hero--cinematic inner-hero--contact contact-hero">
           <div className="cinematic-media cinematic-media--contact" aria-hidden="true">
-            <img src="/manus-storage/async-images/NCDTs6Y8K92XGTw5S633HW/image-3.webp" alt="" loading="eager" fetchPriority="high" decoding="async" />
+            <img src="/assets/site/contact-project-review.webp" alt="" loading="eager" fetchPriority="high" decoding="async" />
             <span className="cinematic-media__veil" />
           </div>
           <div className="hero-grid" aria-hidden="true" />

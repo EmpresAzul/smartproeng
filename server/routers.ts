@@ -1,4 +1,4 @@
-import { COMPANY } from "@shared/siteContent";
+import { COMPANY } from "../shared/siteContent";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { getSessionCookieOptions } from "./_core/cookies";

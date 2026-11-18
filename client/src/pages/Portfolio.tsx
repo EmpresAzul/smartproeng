@@ -11,7 +11,7 @@ export default function Portfolio() {
       <main>
         <section className="inner-hero inner-hero--cinematic inner-hero--portfolio">
           <div className="cinematic-media cinematic-media--portfolio" aria-hidden="true">
-            <img src="/manus-storage/cinematic-portfolio_07d282b2.webp" alt="" loading="eager" fetchPriority="high" decoding="async" />
+            <img src="/assets/site/portfolio-bridge.webp" alt="" loading="eager" fetchPriority="high" decoding="async" />
             <span className="cinematic-media__veil" />
           </div>
           <div className="hero-grid" aria-hidden="true" />

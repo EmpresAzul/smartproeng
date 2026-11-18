@@ -44,5 +44,15 @@
 ## Estado de publicação e arquivos do proprietário
 
 - `publishing.auto_publish` está **ativado**; um checkpoint aceito em `main` pode disparar publicação automática. A conclusão deve ser consultada no Dashboard; não presumir que o site já está publicado.
-- As instruções do proprietário também descrevem hospedagem externa/cPanel em `smartproeng.spweb.digital`. O arquivo `napoleon.zip` e os demais guias do proprietário foram preservados, sem reconstrução nesta etapa.
+- As instruções do proprietário também descrevem hospedagem externa/cPanel em `smartproeng.spweb.digital`. O antigo `napoleon.zip` foi substituído por um pacote real de runtime, sem credenciais.
 - Antes das campanhas pagas, permanecem pendentes: confirmar CREA/UF e atribuições, aprovar as minutas legais, validar subprocessadores/retenção, confirmar o domínio público, decidir tags opcionais e medir PageSpeed real (a escala oficial máxima é 100).
+
+## Novo pedido — builds Vercel e hospedagem Napoleon
+
+- [x] **Mídia portátil e original.** As fotos originais de Home, Sobre, Portfólio e Contato estão versionadas como WebP em `client/public/assets/site/`; as referências a imagens nas páginas usam esses caminhos locais, o logo também está no projeto e os cinco JPEGs idênticos que estavam incorretamente nomeados como WebP foram removidos.
+- [x] **Deploy integrado do Vercel.** Existe entrypoint Express `index.ts` com exportação default, separação entre desenvolvimento e produção, preset Express, build explícito, HTML SEO incluído na função, assets estáticos em `public/`, e rotas SPA/API verificadas.
+- [x] **Pacote Napoleon/cPanel.** `pnpm package:napoleon` gera `napoleon.zip` com servidor compilado, frontend e fotos locais, inicialização Node 22, versões runtime fixadas e package-lock, migrações MySQL e nenhum `.env` ou `node_modules`.
+- [x] **Documentação e limites.** `docs/DEPLOYMENT.md` e as instruções no ZIP descrevem Vercel/Git, variáveis de ambiente, MySQL/migrações e instalação via Node.js no cPanel, sem segredos e com ressalva de disponibilidade dependente do plano.
+- [x] **Verificação e sincronização.** `pnpm install --frozen-lockfile`, `pnpm check`, 16 testes, build Vite/Express, smoke tests do entrypoint e assets Vercel, instalação limpa do ZIP com `npm ci --omit=dev`, validação do conteúdo do ZIP e `git diff --check` passaram; `main` foi enviado por push normal depois de confirmar que remoto e local estavam alinhados.
+
+  O deploy real nos painéis Vercel/cPanel não foi executado a partir desta sessão. A hospedagem externa ainda precisa de variáveis, MySQL/migrações e, no cPanel, Node.js 22/Passenger habilitado no plano.

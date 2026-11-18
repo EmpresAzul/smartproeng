@@ -41,7 +41,7 @@ export default function SiteLayout({ children, dark = false }: { children: React
       <header className={`site-header ${dark ? "site-header--dark" : ""}`}>
         <div className="site-header__inner container">
           <Link href={campaignHref("/")} className="brand-lockup" aria-label="Smart ProEng — página inicial">
-            <img src="/manus-storage/smartproeng-lockup-dark_9118523d.jpg" alt="Smart ProEng — Inteligência em Gerenciamento de Projetos" width="435" height="85" fetchPriority="high" />
+            <img src="/brand/smartproeng-lockup-dark.jpg" alt="Smart ProEng — Inteligência em Gerenciamento de Projetos" width="435" height="85" fetchPriority="high" />
           </Link>
           <button
             type="button"
@@ -71,7 +71,7 @@ export default function SiteLayout({ children, dark = false }: { children: React
           <div className="site-footer__top">
             <div className="site-footer__brand">
               <Link href="/" className="brand-lockup" aria-label="Smart ProEng — página inicial">
-                <img src="/manus-storage/smartproeng-lockup-dark_9118523d.jpg" alt="Smart ProEng" width="435" height="85" loading="lazy" />
+                <img src="/brand/smartproeng-lockup-dark.jpg" alt="Smart ProEng" width="435" height="85" loading="lazy" />
               </Link>
               <p>Engenharia consultiva para decisões com mais clareza sobre custo, prazo e risco.</p>
             </div>

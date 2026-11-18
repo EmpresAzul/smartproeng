@@ -14,7 +14,7 @@ export default function Home() {
       <main>
         <section className="hero hero--home">
           <div className="cinematic-media cinematic-media--home" aria-hidden="true">
-            <img src="/manus-storage/home-city-hero_abea5a93.webp" alt="" fetchPriority="high" decoding="async" />
+            <img src="/assets/site/home-city-hero.webp" alt="" fetchPriority="high" decoding="async" />
             <span className="cinematic-media__veil" />
           </div>
           <div className="hero-grid" aria-hidden="true" />

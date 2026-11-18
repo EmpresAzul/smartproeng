@@ -11,7 +11,7 @@ export default function About() {
       <main>
         <section className="inner-hero inner-hero--cinematic inner-hero--about">
           <div className="cinematic-media cinematic-media--about" aria-hidden="true">
-            <img src="/manus-storage/about-fieldwork_dd015585.webp" alt="" loading="eager" fetchPriority="high" decoding="async" />
+            <img src="/assets/site/about-fieldwork.webp" alt="" loading="eager" fetchPriority="high" decoding="async" />
             <span className="cinematic-media__veil" />
           </div>
           <div className="hero-grid" aria-hidden="true" />

@@ -10,3 +10,11 @@ export function publicClientScript(env: NodeJS.ProcessEnv = process.env): string
   const json = JSON.stringify(publicClientConfig(env)).replaceAll("<", "\\u003c");
   return `window.__SMARTPROENG_CONFIG__=${json};`;
 }
+
+export function injectPublicClientConfig(template: string): string {
+  const placeholder = '<script id="smartproeng-runtime-config"></script>';
+  if (!template.includes(placeholder)) {
+    throw new Error("Runtime client configuration placeholder is missing from index.html");
+  }
+  return template.replace(placeholder, `<script>${publicClientScript()}</script>`);
+}
